@@ -1,0 +1,23 @@
+/* pagination.module.css */
+.container {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
+.button {
+    width: 100px;
+    padding: 16px;
+    background-color: crimson;
+    color: white;
+    cursor: pointer;
+    border: none; /* Add this line to remove any default border */
+    border-radius: 8px; /* Add this line for border radius */
+  }
+  
+.button:disabled {
+    background-color: rgba(220, 20, 60, 0.473);
+    cursor: not-allowed;
+    border-radius: 32px;
+  }
+  
