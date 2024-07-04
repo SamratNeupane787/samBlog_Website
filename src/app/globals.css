@@ -1,8 +1,8 @@
-:root{
-    --bg:white;
-    --textColor:black;
-    --softbg:#f0f0f0;
-    --softTextColor:#626262;
+:root {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
 }
 
 *{
@@ -26,7 +26,7 @@ a{
 .dark{
   --bg:#0f172a;
   --textColor:#ddd;
-  --softbg:#1f273a;
+  --softBg:#1f273a;
   --softTextColor:#a6a6a6;
 }
 
@@ -34,7 +34,7 @@ a{
 
   --bg:white;
   --textColor:black;
-  --softbg:#f0f0f0;
+  --softBg:#f0f0f0;
   --softTextColor:#626262;
 }
 

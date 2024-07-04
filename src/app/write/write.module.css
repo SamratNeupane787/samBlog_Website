@@ -60,8 +60,11 @@
   
   .textArea {
     width: 100%;
+    font-size: 16px;
+    color: #b3b3b1;
+
   }
-  
+
   .publish{
     position: absolute;
     top: 0px;
