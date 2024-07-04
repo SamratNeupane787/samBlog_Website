@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./loginPage.module.css";
-function page() {
+function Loginpage() {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -12,4 +12,4 @@ function page() {
   );
 }
 
-export default page;
+export default Loginpage;
