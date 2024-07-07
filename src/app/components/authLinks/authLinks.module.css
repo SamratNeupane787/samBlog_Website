@@ -33,6 +33,9 @@
     z-index: 999;
   }
   
+  .linkImage{
+    border-radius: 50%;
+  }
   @media screen and (max-width: 640px) {
     .burger {
       display: flex;

@@ -1,11 +1,16 @@
+"use client";
 import React from "react";
 import styles from "./navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import AuthLinks from "../authLinks/AuthLinks";
 import ThemeToggle from "../themeToggle/ThemeToggle";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+ 
+
   return (
     <div className={styles.container}>
       <div className={styles.social}>
@@ -26,6 +31,7 @@ const Navbar = () => {
         <Link href="/" className={styles.link}>
           About
         </Link>
+       
         <AuthLinks />
       </div>
     </div>
