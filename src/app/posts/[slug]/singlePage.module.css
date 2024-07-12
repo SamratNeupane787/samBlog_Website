@@ -68,6 +68,13 @@
     margin-bottom: 20px;
   }
   
+  .views{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+  }
   @media screen and (max-width: 1536px) {
     .title {
       font-size: 54px;

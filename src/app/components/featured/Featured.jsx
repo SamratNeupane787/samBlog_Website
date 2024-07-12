@@ -2,7 +2,22 @@ import React from "react";
 import styles from "./featured.module.css";
 import Link from "next/link";
 import Image from "next/image";
-const Featured = () => {
+
+const getData = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/featured`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+};
+
+const Featured = async () => {
+  const data = await getData();
+  const post = data[0];
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
@@ -10,17 +25,17 @@ const Featured = () => {
       </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image src="/p1.jpeg" alt="" fill />
+          <Image src={post?.img} alt="" fill />
         </div>
         <div className={styles.textContainer}>
-          <h1 className={styles.postTitle}>Lorem, ipsum dolor.</h1>
-          <p className={styles.postDescription}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab delectus
-            distinctio amet, hic rserum soluta quae exercitationem, nobis esse
-            saepe obcaecati magnam, totam deleniti repellendus explicabo. Nemo
-            quo minus expedita ipsum excepturi consequatur officiis?
-          </p>
-          <button className={styles.button}>Read More</button>
+          <h1 className={styles.postTitle}>{post?.title}</h1>
+          <p
+            className={styles.postDescription}
+            dangerouslySetInnerHTML={{ __html: post?.desc }}
+          ></p>
+          <button className={styles.button}>
+            <Link href={`/posts/${post.slug}`}>Read More</Link>
+          </button>
         </div>
       </div>
     </div>
