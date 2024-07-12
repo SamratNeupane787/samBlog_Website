@@ -82,12 +82,19 @@ const WritePage = () => {
       .replace(/[\s_-]+/g, "-")
       .replace(/^-+|-+$/g, "");
 
+  const stripHtmlTags = (str) => {
+    const doc = new DOMParser().parseFromString(str, "text/html");
+    return doc.body.textContent || "";
+  };
+
   const handleSubmit = async () => {
+    const plainTextValue = stripHtmlTags(value);
+
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
         title,
-        desc: value,
+        desc: plainTextValue,
         img: media,
         slug: slugify(title),
         catSlug: catSlug || "style", //If not selected, choose the general category
