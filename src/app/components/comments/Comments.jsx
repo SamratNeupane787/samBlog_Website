@@ -26,7 +26,7 @@ const Comments = ({ postSlug }) => {
   console.log(`the data :${status}`);
 
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    `https://blog.samratneupane.com.np/api/comments?postSlug=${postSlug}`,
     fetcher
   );
 

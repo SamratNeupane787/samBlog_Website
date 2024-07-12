@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./menuPosts.module.css";
 
 const getData = async () => {
-  const res = await fetch(`http://localhost:3000/api/popular`, {
+  const res = await fetch(`https://blog.samratneupane.com.np/api/popular`, {
     cache: "no-store",
   });
 

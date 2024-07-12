@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/featured`, {
+  const res = await fetch(`https://blog.samratneupane.com.np/api/featured`, {
     cache: "no-store",
   });
 
