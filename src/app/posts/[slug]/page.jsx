@@ -4,7 +4,7 @@ import Image from "next/image";
 import Comments from "@/app/components/comments/Comments";
 
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+  const res = await fetch(`${process.env.url}/api/posts/${slug}`, {
     cache: "no-store",
   });
 
