@@ -1,6 +1,7 @@
 "use client";
+
 import Image from "next/image";
-import styles from "./write.module.css";
+import styles from "./writePage.module.css";
 import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
@@ -12,14 +13,11 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import dynamic from "next/dynamic";
+import ReactQuill from "react-quill";
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
-  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
@@ -42,7 +40,6 @@ const WritePage = () => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
-
           switch (snapshot.state) {
             case "paused":
               console.log("Upload is paused");
@@ -52,13 +49,10 @@ const WritePage = () => {
               break;
           }
         },
-        (error) => {
-          toast.error("Upload failed!");
-        },
+        (error) => {},
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setMedia(downloadURL);
-            toast.success("Image Uploaded successfully!");
           });
         }
       );
@@ -83,19 +77,12 @@ const WritePage = () => {
       .replace(/[\s_-]+/g, "-")
       .replace(/^-+|-+$/g, "");
 
-  const stripHtmlTags = (str) => {
-    const doc = new DOMParser().parseFromString(str, "text/html");
-    return doc.body.textContent || "";
-  };
-
   const handleSubmit = async () => {
-    const plainTextValue = stripHtmlTags(value);
-
-    const res = await fetch(`${process.env.url}/api/posts`, {
+    const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
         title,
-        desc: plainTextValue,
+        desc: value,
         img: media,
         slug: slugify(title),
         catSlug: catSlug || "style", //If not selected, choose the general category
@@ -104,16 +91,12 @@ const WritePage = () => {
 
     if (res.status === 200) {
       const data = await res.json();
-      toast.success("Post created successfully!");
       router.push(`/posts/${data.slug}`);
-    } else {
-      toast.error("Failed to create post!");
     }
   };
 
   return (
     <div className={styles.container}>
-      <ToastContainer />
       <input
         type="text"
         placeholder="Title"
