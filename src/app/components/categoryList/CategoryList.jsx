@@ -1,10 +1,12 @@
+"use client";
+
 import React from "react";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
 const getData = async () => {
-  const res = await fetch("https://blog.samratneupane.com.np/api/categories", {
+  const res = await fetch(`${process.env.url}/api/categories`, {
     cache: "no-store",
   });
 

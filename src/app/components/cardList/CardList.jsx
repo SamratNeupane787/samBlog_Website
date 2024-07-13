@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const getData = async (page, cat) => {
   const res = await fetch(
-    `https://blog.samratneupane.com.np/api/posts?page=${page}&cat=${cat || ""}`,
+    `${process.env.url}/api/posts?page=${page}&cat=${cat || ""}`,
     {
       cache: "no-store",
     }
