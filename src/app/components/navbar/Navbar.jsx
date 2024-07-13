@@ -22,7 +22,7 @@ const Navbar = () => {
       </div>
       <div className={styles.links}>
         <ThemeToggle />
-        <Link href="/" className={styles.link}>
+        <Link href="https://blog.samratneupane.com.np/" className={styles.link}>
           Homepage
         </Link>
         <Link href="/" className={styles.link}>
