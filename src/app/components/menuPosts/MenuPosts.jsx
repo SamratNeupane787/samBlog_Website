@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./menuPosts.module.css";
 
 const getData = async () => {
-  const res = await fetch(`https://blog.samratneupane.com.np/api/popular`, {
+  const res = await fetch(`${process.env.url}/api/popular`, {
     cache: "no-store",
   });
 
@@ -16,27 +16,14 @@ const getData = async () => {
   return res.json();
 };
 
-const MenuPosts = ({ withImage }) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getData();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+const MenuPosts = async ({ withImage }) => {
+  const data = await getData();
 
   return (
     <div className={styles.items}>
       {data?.map((item) => (
         <Link
-          key={item.id}
+          key={item._id}
           href={`/posts/${item.slug}`}
           className={styles.item}
         >
@@ -56,8 +43,7 @@ const MenuPosts = ({ withImage }) => {
             </span>
             <h3 className={styles.postTitle}>{item.title}</h3>
             <div className={styles.detail}>
-              <span className={styles.username}>John Doe</span>
-              <span className={styles.date}> - 10.03.2023</span>
+              <span className={styles.date}>{item.createdAt}</span>
             </div>
           </div>
         </Link>

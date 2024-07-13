@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const getData = async (slug) => {
-  const res = await fetch(`https://blog.samratneupane.com.np/api/featured`, {
+  const res = await fetch(`${process.env.url}/api/featured`, {
     cache: "no-store",
   });
 
@@ -32,7 +32,7 @@ const Featured = async () => {
           <p
             className={styles.postDescription}
             dangerouslySetInnerHTML={{ __html: post?.desc }}
-          ></p>
+          />
           <button className={styles.button}>
             <Link href={`/posts/${post.slug}`}>Read More</Link>
           </button>
