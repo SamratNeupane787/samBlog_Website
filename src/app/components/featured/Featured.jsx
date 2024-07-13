@@ -3,7 +3,7 @@ import styles from "./featured.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const getData = async (slug) => {
+const getData = async () => {
   const res = await fetch(`${process.env.url}/api/featured`, {
     cache: "no-store",
   });

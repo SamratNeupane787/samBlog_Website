@@ -15,7 +15,6 @@ import { app } from "@/utils/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "next/dynamic";
-
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const WritePage = () => {
