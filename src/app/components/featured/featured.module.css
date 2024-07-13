@@ -60,7 +60,11 @@
     }
   
     .imgContainer {
-      display: none;
+      display: flex;
+      margin-left: 4px;
+      margin-right: 4px;
+      justify-content: center;
+      align-items: center;
     }
   }
   
