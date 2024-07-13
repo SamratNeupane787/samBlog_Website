@@ -91,7 +91,7 @@ const WritePage = () => {
   const handleSubmit = async () => {
     const plainTextValue = stripHtmlTags(value);
 
-    const res = await fetch("/api/posts", {
+    const res = await fetch(`${process.env.url}/api/posts`, {
       method: "POST",
       body: JSON.stringify({
         title,
