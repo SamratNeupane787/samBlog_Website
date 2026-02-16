@@ -39,6 +39,7 @@ const Footer = () => {
           <Link href="/">Instagram</Link>
           <Link href="/">Tiktok</Link>
           <Link href="/">Youtube</Link>
+          <Link href="https://griffitystudios.com">Griffity studios</Link>
         </div>
       </div>
     </div>
